@@ -1,9 +1,7 @@
 import numpy as np
 import joblib
 
-# -----------------------------
-# LOAD MODEL + ENCODERS
-# -----------------------------
+
 model = joblib.load("models/performance_model.pkl")
 dept_encoder = joblib.load("models/department_encoder.pkl")
 target_encoder = joblib.load("models/target_encoder.pkl")
@@ -28,9 +26,6 @@ def predict_performance():
         print("Unknown department → defaulting to 0")
         dept_encoded = 0
 
-    # -----------------------------
-    # MATCH TRAINING FEATURE ORDER EXACTLY
-    # -----------------------------
     input_data = np.array([[
         age,
         experience,
