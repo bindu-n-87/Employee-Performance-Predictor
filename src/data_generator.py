@@ -2,21 +2,12 @@ import pandas as pd
 import numpy as np
 import os
 
-# -----------------------------
-# CREATE DATA FOLDER IF NOT EXISTS
-# -----------------------------
 os.makedirs("data", exist_ok=True)
 
-# -----------------------------
-# SET SEED
-# -----------------------------
 np.random.seed(42)
 
 n = 1000
 
-# -----------------------------
-# GENERATE DATA
-# -----------------------------
 data = pd.DataFrame({
     "Employee_ID": range(1, n+1),
     "Age": np.random.randint(22, 60, n),
@@ -31,9 +22,6 @@ data = pd.DataFrame({
     "Overtime_Hours": np.random.randint(0, 60, n)
 })
 
-# -----------------------------
-# PERFORMANCE LOGIC
-# -----------------------------
 def calculate_performance(row):
 
     score = (
@@ -54,9 +42,6 @@ def calculate_performance(row):
 
 data["Performance"] = data.apply(calculate_performance, axis=1)
 
-# -----------------------------
-# SAVE FILE
-# -----------------------------
 file_path = "data/employee_data.csv"
 data.to_csv(file_path, index=False)
 
